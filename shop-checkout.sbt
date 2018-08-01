@@ -5,7 +5,7 @@ lazy val root = project.root
   .setName("shop-checkout")
   .setDescription("Shop checkout application")
   .configureRoot
-  .aggregate(checkout)
+  .aggregate(checkout, app)
 
 lazy val checkout = project.from("checkout")
   .setName("checkout")
@@ -18,6 +18,14 @@ lazy val checkout = project.from("checkout")
     IO.write(file, s"version=${version.value}")
     Seq(file)
   })
+
+lazy val app = project.from("app")
+  .setName("app")
+  .setDescription("Checkout application")
+  .setInitialImport("_")
+  .configureModule
+  .configureRun("shop.checkout.Main")
+  .dependsOn(checkout)
 
 addCommandAlias("fullTest", ";test;scalastyle")
 
