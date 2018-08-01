@@ -1,3 +1,3 @@
 package shop.checkout
 
-final case class Quantity(value: Double)
+final case class Quantity(value: Int)

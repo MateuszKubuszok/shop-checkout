@@ -103,6 +103,8 @@ object Settings extends Dependencies {
       "-Xlint"
     ),
 
+    addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.7"),
+
     Global / cancelable := true,
 
     Compile / fork := true,
