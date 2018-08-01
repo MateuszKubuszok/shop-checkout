@@ -20,7 +20,31 @@ class CheckoutServicesSpec extends Specification {
       val result = services.totalCost(items)
 
       // then
-      result must beEqualTo(Success(205))
+      result must beEqualTo(Success(145))
+    }
+
+    "with 2 apples have one free" in {
+      // given
+      val services = new CheckoutServices[Try]
+      val items    = List(oneApple, oneApple, oneApple)
+
+      // when
+      val result = services.totalCost(items)
+
+      // then
+      result must beEqualTo(Success(120))
+    }
+
+    "with 3 oranges pay for 2" in {
+      // given
+      val services = new CheckoutServices[Try]
+      val items    = List(oneOrange, oneOrange, oneOrange, oneOrange)
+
+      // when
+      val result = services.totalCost(items)
+
+      // then
+      result must beEqualTo(Success(75))
     }
 
     "return error if some item has no price defined" in {
