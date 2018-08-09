@@ -71,6 +71,54 @@ class CheckoutServicesSpec extends Specification {
       result must beEqualTo(Success(75))
     }
 
+    "with one apple and the bananas it should be 0.80p" in {
+      // given
+      val services = new CheckoutServices[Try]
+      val items    = List(oneApple, oneBanana, oneBanana)
+
+      // when
+      val result = services.totalCost(items)
+
+      // then
+      result must beEqualTo(Success(80))
+    }
+
+    "with one apple and three bananas it should be 0.80p" in {
+      // given
+      val services = new CheckoutServices[Try]
+      val items    = List(oneApple, oneBanana, oneBanana, oneBanana)
+
+      // when
+      val result = services.totalCost(items)
+
+      // then
+      result must beEqualTo(Success(80))
+    }
+
+    "with two apple and three bananas it should be 1.40p" in {
+      // given
+      val services = new CheckoutServices[Try]
+      val items    = List(oneApple, oneApple, oneBanana, oneBanana, oneBanana)
+
+      // when
+      val result = services.totalCost(items)
+
+      // then
+      result must beEqualTo(Success(140))
+    }
+
+    "with three apple and three bananas it should be 1.80p" in {
+      // given
+      val services = new CheckoutServices[Try]
+      val items    = List(oneApple, oneApple, oneApple, oneBanana, oneBanana, oneBanana)
+
+      // when
+      val result = services.totalCost(items)
+
+      // then
+      result must beEqualTo(Success(180))
+    }
+
     "return error if some item has no price defined" in {
       // given
       val services = new CheckoutServices[Try]
