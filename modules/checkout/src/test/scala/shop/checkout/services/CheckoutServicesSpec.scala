@@ -35,6 +35,30 @@ class CheckoutServicesSpec extends Specification {
       result must beEqualTo(Success(120))
     }
 
+    "with 2 bananas have one free" in {
+      // given
+      val services = new CheckoutServices[Try]
+      val items    = List(oneBanana, oneBanana, oneBanana)
+
+      // when
+      val result = services.totalCost(items)
+
+      // then
+      result must beEqualTo(Success(40))
+    }
+
+    "with 2 apples or bananas have one free (cheapest one)" in {
+      // given
+      val services = new CheckoutServices[Try]
+      val items    = List(oneApple, oneBanana, oneApple)
+
+      // when
+      val result = services.totalCost(items)
+
+      // then
+      result must beEqualTo(Success(120))
+    }
+
     "with 3 oranges pay for 2" in {
       // given
       val services = new CheckoutServices[Try]

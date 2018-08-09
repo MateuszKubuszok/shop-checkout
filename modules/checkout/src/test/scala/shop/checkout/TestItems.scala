@@ -7,4 +7,7 @@ object TestItems {
 
   val oneOrange  = Item(ItemType("orange"))
   val twoOranges = Item(ItemType("orange"), Quantity(2))
+
+  val oneBanana  = Item(ItemType("banana"))
+  val twoBananas = Item(ItemType("banana"), Quantity(2))
 }
