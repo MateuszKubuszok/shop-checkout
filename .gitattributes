@@ -1,1 +1,1 @@
-script/sbt linguist-vendored
+scripts/sbt linguist-vendored
